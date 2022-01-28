@@ -28,8 +28,14 @@
 @font-face {
   font-family: "CoreSansC"; 
   src: url("../fonts/CoreSansC-65Bold.woff2") format("truetype"); 
-  font-style: normal; 
+  font-style: bold; 
   font-weight: 600; 
+}
+@font-face {
+  font-family: "CoreSansC"; 
+  src: url("../fonts/CoreSansC-55Medium.woff2") format("truetype"); 
+  font-style: normal; 
+  font-weight: 500; 
 }
 
 body{
@@ -214,7 +220,7 @@ body{
   line-height: 1.1em;
 }
 /* КАТАЛОГ ПРОДУКЦИИ */
-.catalog, .choice-customer, .work-with-us{
+.catalog, .choice-customer, .work-with-us, .reviews{
   position: relative;
   text-align: center;
   padding: 2rem 0;
@@ -329,7 +335,12 @@ body{
 .star_svg.svg-fill.fill{
   fill: var(--color-y);
 }
-
+.rating_comment{
+  padding: .5em 0;
+}
+.rating_comment > *{
+  margin: 0 .3em;
+}
 .rating_comment .count-hand,
 .rating_comment .count-comment{
   color: white;
@@ -359,4 +370,62 @@ body{
 }
 .work__item{
   padding: 1em .2em;
+}
+/* ОТЗЫВЫ КЛИЕНТОВ */
+.reviews__block::before{
+  content: '';
+  position: absolute;
+  background-color: #C4E3C2;
+  left: 0;
+  width: 100%;
+  top: 37%;
+  bottom: 0;
+  z-index: -1;
+}
+.reviews__block .block__item{
+  position: relative;
+  background-color: white;
+  border-radius: .5rem;
+  margin: 0 1rem;
+  border: #E4EAEA solid 1px;
+  padding: 2rem 1rem;
+}
+.reviews__block .block__item::before{
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #E4EAEA;
+  border-radius: .5rem;
+  transform: translate(.6rem,-.6rem);
+}
+.reviews__block .item__image img{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.reviews__block .item__content{
+  font-size: 1.375rem;
+  padding: 1em 0  ;
+}
+.reviews__block .item__text{
+  /* max-height: 10em; */
+  font-weight: 500;
+  overflow: hidden;
+  -webkit-line-clamp: 5; /* Число отображаемых строк */
+  display: -webkit-box; /* Включаем флексбоксы */
+  -webkit-box-orient: vertical; /* Вертикальная ориентация */
+  overflow: hidden; /* Обрезаем всё за пределами блока */
+}
+.reviews__block .item__name,
+.reviews__block .item__city{
+  overflow: hidden;
+  line-height: 1.7em;
+  -webkit-line-clamp: 1; /* Число отображаемых строк */
+  display: -webkit-box; /* Включаем флексбоксы */
+  -webkit-box-orient: vertical; /* Вертикальная ориентация */
+  overflow: hidden; /* Обрезаем всё за пределами блока */
 }

@@ -273,6 +273,44 @@
         </div>
       </div>
     </section>
+    <section class="reviews">
+      <div class="container">
+      <h2 class="section-title"><span class="title_green">Отзывы наших </span><span>клиентов</span></h2>
+        <div class="row reviews__block">
+          <? $REVIEWS=[ ['Мария Смирнова','г.Москва',1,5],
+                        ['Валя Кутепова','г.Улан-Уде',2,4],
+                        ['Геннадий Петрович','г.Париж',3,5],
+                        ['Иннокентий Смоктуновсий','г.Вологда',4,3]  ];
+          foreach($REVIEWS as $item): ?>
+          <div class="col-lg-3">
+            <div class="block__item item">
+              <div class="item__image">
+                <img class="img-fluid" src="/img/reviews/<?=$item[2];?>.jpg" alt="">
+              </div>
+              
+              <div class="rating">
+                <div class="d-flex justify-content-center rating-group">
+                  <? for($i=0;$i<5;$i++): ?>
+                  <div class="rating_star">
+                    <svg class="star_svg svg-fill <?=($i<$item[3])?'fill':'';?>" role="img" aria-label="Tools">
+                      <use xlink:href="bootstrap-icons.svg#star-fill"/>
+                    </svg>
+                  </div>
+                  <? endfor; ?>
+                </div>
+              </div>
+              <div class="item__content">
+                <div class="item__name"><?=$item[0];?></div>
+                <div class="item__city"><?=$item[1];?></div>  
+                <div class="item__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa quos quae suscipit cupiditate, veniam obcaecati pariatur distinctio excepturi error! Veniam assumenda reiciendis ratione quae, quod similique, aliquam natus nemo optio vel animi vitae tempore, delectus laboriosam dolor odit! Atque, suscipit?</div>
+              </div>
+            </div>
+          </div>
+          <? endforeach; ?> 
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
   
   
