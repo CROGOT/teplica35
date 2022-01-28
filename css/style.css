@@ -4,6 +4,7 @@
   --color-ls: #BABABA;
   --color-y: #FFC000;
   --color-r: #FF0000;
+  --color-w: white;
 }
 /* Переопределение стилей Bootstrap*/
 @media (min-width: 1400px){
@@ -124,6 +125,14 @@ body{
 .btn-green:hover{
   background-color: var(--color-y);
 }
+.btn-white{
+  color: black;
+  background-color: var(--color-w);
+}
+.btn-white:hover{
+  color: white;
+  background-color: var(--color-r);
+}
 .btn-call-me{
   
   padding: .2rem 1.7rem;
@@ -197,15 +206,15 @@ body{
   -khtml-user-select: none;
   user-select: none; 
 }
-.block__item div:nth-child(1){
+.carousel-item .block__item div:nth-child(1){
   font-size: 1.5rem;
 }
-.block__item div:nth-child(n+2){
+.carousel-item .block__item div:nth-child(n+2){
   font-size: .8rem;
   line-height: 1.1em;
 }
 /* КАТАЛОГ ПРОДУКЦИИ */
-.catalog{
+.catalog, .choice-customer, .work-with-us{
   position: relative;
   text-align: center;
   padding: 2rem 0;
@@ -231,12 +240,15 @@ body{
   bottom: 25%;
   z-index: -1;
 }
-.catalog h2 span{
+.section-title{
+  margin: 2rem auto;
+}
+.section-title span{
   position: relative;
   text-transform: uppercase;
   margin: 1rem 0;
 }
-.catalog h2 span::before{
+.section-title span::before{
   position: absolute;
   left: 0;
   right: 0;
@@ -244,21 +256,95 @@ body{
   content: "";
   border-bottom: 2px solid var(--color-ls);
 }
-.catalog__item h4{
+.section-title span.title_green{
+  color: var(--color-g);
+}
+.section-title span.title_green::before{
+  border-color: var(--color-g);
+}
+.section-title span.title_white{
+  color: var(--color-w);
+}
+.section-title span.title_white::before{
+  border-color: var(--color-w);
+}
+.item__title{
   text-transform: uppercase;
-}
-.catalog__item-image{
-  
-  padding: 1rem 0;
-}
-.catalog__item-image img{
-  border-radius: 3%;
 }
 
-.catalog__item-btn{
+.item__image{
+  position: relative;
+  padding: 1rem 0;
+}
+.item__image img{
+  border-radius: 3%;
+}
+.item__image__flag{
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 1.2em;
+  background-color: var(--color-r);
+  color: var(--color-w);
+  font-size: 1.625rem;
+  line-height: 1.5em;
+  clip-path: polygon(0% 0%, 100% 0%, calc(100% - .7em) 50%, 100% 100%, 0% 100%);
+  padding-right: 1.2em;
+  padding-left: 0.5em;
+}
+.item__image__flag.active{
+  display: block;
+}
+.item__btn{
   padding: .5rem 2rem;
 }
-.catalog__item-btn .btn{
+.item__btn .btn{
   width: 100%;
   text-transform: uppercase;
+}
+.choice-customer{
+  background-color: var(--color-s);
+}
+
+/* ВЫБОР ПОКУПАТЕЛЕЙ*/
+.choice-customer .item__title{
+  color: var(--color-w);
+  font-size: 1.375rem;
+}
+.rating_star{
+  margin: 0 .3em;
+  width: 36px;
+  height: 34px;
+}
+.rating_star > *,
+.hand-img > *,
+.comment-img > *{
+  width: 100%;
+  height: 100%;
+}
+.star_svg.svg-fill{
+  stroke: var(--color-y);
+  fill:none;
+}
+.star_svg.svg-fill.fill{
+  fill: var(--color-y);
+}
+
+.rating_comment .count-hand,
+.rating_comment .count-comment{
+  color: white;
+  line-height: 24px;
+}
+.hand-img, .comment-img{
+  width: 24px;
+  height: 24px;
+}
+
+.hand_svg, .comment_svg{
+  fill: white;
+}
+
+/* РАБОТА С НАМИ*/
+.table-work{
+  border: var(--color-g) solid 2px;
 }

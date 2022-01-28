@@ -183,30 +183,105 @@
     <section class="catalog">
       <div class="catalog__line"></div>
       <div class="container">
-        <h2><span>Каталог нашей продукции</span></h2>
-        <div class="row catalog__block">
+        <h2 class="section-title"><span>Каталог нашей продукции</span></h2>
+        <div class="row catalog__block block">
           <? $CATALOG=['Теплицы','Парники','Грядки','Клумбы','Поликарбонат','Беседки','Душевые кабины','Штакетник'];
           for($i=0;$i<8;$i++): ?>
 
           <div class="col-3">
-            <div class="catalog__item">
-              <h4><?=$CATALOG[$i];?></h4>
-              <div class="catalog__item-image">
+            <div class="block__item item">
+              <h4 class="item__title"><?=$CATALOG[$i];?></h4>
+              <div class="item__image">
                 <img class="img-fluid" src="/img/catalog/<?=$i+1;?>.jpg" alt="">
               </div>
-              <div class="catalog__item-btn"><button type="button" class="btn btn-green">Подробнее</button></div>
-              
+              <div class="item__btn"><button type="button" class="btn btn-green">Подробнее</button></div>
             </div>
           </div>
-           <? endfor; ?> 
+          <? endfor; ?> 
         </div>
       </div>
-
     </section>
-    <section>
-
+    <section class="choice-customer">
+      <div class="container">
+      <h2 class="section-title"><span class="title_green">Выбор </span><span class="title_white">покупателей</span></h2>
+        <div class="row choice-customer_block block">
+        <? $CHOICE_CUSTOMER=[ ['“Крепость”<br>теплица из поликарбоната','1',5,23,17,'-10%'],
+                              ['“бабочка”<br>парник из поликарбоната','2',5,23,17,null],
+                              ['“капелька”<br>теплица 3 метра','3',4,23,17,'ХИТ'],
+                              ['комплект грядок<br>в теплицу','4',3,23,17,null]  ];
+          foreach($CHOICE_CUSTOMER as $item): ?>
+          <div class="col-3">
+            <div class="block__item item">
+              <h4 class="item__title"><?=$item[0];?></h4>
+              <div class="item__image">
+                <div class="item__image__flag <?=($item[5])?'active':'';?>"><?=$item[5];?></div>
+                <img class="img-fluid" src="/img/catalog/<?=$item[1];?>.jpg" alt="">
+              </div>
+              <div class="item__btn"><button type="button" class="btn btn-white">В корзину</button></div>
+              <div class="rating">
+                <div class="d-flex justify-content-center rating-group">
+                  <? for($i=0;$i<5;$i++): ?>
+                  <div class="rating_star">
+                    <svg class="star_svg svg-fill <?=($i<$item[2])?'fill':'';?>" role="img" aria-label="Tools">
+                      <use xlink:href="bootstrap-icons.svg#star-fill"/>
+                    </svg>
+                  </div>
+                  <? endfor; ?>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center rating_comment">
+                <div class="hand-img">
+                  <svg class="hand_svg svg-fill" role="img" aria-label="Tools">
+                    <use xlink:href="bootstrap-icons.svg#hand-thumbs-up"/>
+                  </svg>
+                </div>
+                <div class="count-hand"><?=$item[3];?></div>
+                <div class="comment-img">
+                  <svg class="comment_svg svg-fill" role="img" aria-label="Tools">
+                    <use xlink:href="bootstrap-icons.svg#chat-left"/>
+                  </svg>
+                </div>
+                <div class="count-comment"><?=$item[4];?></div>
+              </div>
+            </div>
+          </div>
+          <? endforeach; ?> 
+        </div>
+      </div>
+    </section>
+    <section class="work-with-us">
+      <div class="container">
+        <h2 class="section-title"><span class="title_green">Преимущества </span><span class="title_white">работы с нами </span></h2>
+        <div class="row table-work work">
+        <? $WORKUS=[  ['Высочайшее качество','1'],
+                      ['Цены завода изготовителя','2'],
+                      ['Гарантия','3'],
+                      ['Собственное производство','4']
+                      ['Наличие на складе','5']
+                      ['Сервисная поддержка 24/7','6']  ];
+          foreach($WORKUS as $item): ?>
+          <div class="lg-col-4 work__item item">
+            <div class="row">
+              <div class="item__img">
+                <img class="img-fluid" src="/img/workus/<?=$item[1]?>.png" alt="" >
+              </div>
+              <div class="item_text"><?=$item[0]?></div>
+            </div>
+          </div>
+          <? endforeach; ?> 
+        </div>
+      </div>
     </section>
   </main>
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <footer>
 
   </footer>
