@@ -347,4 +347,16 @@ body{
 /* РАБОТА С НАМИ*/
 .table-work{
   border: var(--color-g) solid 2px;
+  background-color: #F4F5F5;
+  text-align: left;
+  font-size: 2rem;
+  line-height: 1em;
+  padding: 2em;
+
+}
+.table-work .item__text{
+  padding: .2em .5em;
+}
+.work__item{
+  padding: 1em .2em;
 }
