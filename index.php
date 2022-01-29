@@ -1,3 +1,6 @@
+<?php
+  include_once('_modules/function.php');
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -184,11 +187,11 @@
       <div class="catalog__line"></div>
       <div class="container">
         <h2 class="section-title"><span>Каталог нашей продукции</span></h2>
-        <div class="row catalog__block block">
+        <div class="row row-cols-1 row-cols-lg-4 catalog__block block">
           <? $CATALOG=['Теплицы','Парники','Грядки','Клумбы','Поликарбонат','Беседки','Душевые кабины','Штакетник'];
           for($i=0;$i<8;$i++): ?>
 
-          <div class="col-3">
+          <div class="col">
             <div class="block__item item">
               <h4 class="item__title"><?=$CATALOG[$i];?></h4>
               <div class="item__image">
@@ -204,31 +207,20 @@
     <section class="choice-customer">
       <div class="container">
       <h2 class="section-title"><span class="title_green">Выбор </span><span class="title_white">покупателей</span></h2>
-        <div class="row choice-customer_block block">
+        <div class="row row-cols-1 row-cols-lg-4 choice-customer_block block">
         <? $CHOICE_CUSTOMER=[ ['“Крепость”<br>теплица из поликарбоната','1',5,23,17,'-10%'],
                               ['“бабочка”<br>парник из поликарбоната','2',5,56,19,null],
                               ['“капелька”<br>теплица 3 метра','3',4,177,16,'ХИТ'],
                               ['комплект грядок<br>в теплицу','4',3,44,23,null]  ];
           foreach($CHOICE_CUSTOMER as $item): ?>
-          <div class="col-3">
+          <div class="col">
             <div class="block__item item">
               <h4 class="item__title"><?=$item[0];?></h4>
-              <div class="item__image">
+              <div class="d-inline-block item__image">
                 <div class="item__image__flag <?=($item[5])?'active':'';?>"><?=$item[5];?></div>
                 <img class="img-fluid" src="/img/catalog/<?=$item[1];?>.jpg" alt="">
               </div>
-              
-              <div class="rating">
-                <div class="d-flex justify-content-center rating-group">
-                  <? for($i=0;$i<5;$i++): ?>
-                  <div class="rating_star">
-                    <svg class="star_svg svg-fill <?=($i<$item[2])?'fill':'';?>" role="img" aria-label="Tools">
-                      <use xlink:href="bootstrap-icons.svg#star-fill"/>
-                    </svg>
-                  </div>
-                  <? endfor; ?>
-                </div>
-              </div>
+              <? rating($item[2]); ?>
               <div class="d-flex justify-content-center rating_comment">
                 <div class="hand-img">
                   <svg class="hand_svg svg-fill" role="img" aria-label="Tools">
@@ -253,7 +245,7 @@
     <section class="work-with-us">
       <div class="container">
         <h2 class="section-title"><span class="title_green">Преимущества </span><span>работы с нами</span></h2>
-        <div class="row table-work work">
+        <div class="row row-cols-md-2 row-cols-lg-3 table-work work">
         <? $WORKUS=[  ['Высочайшее качество','1'],
                       ['Цены завода изготовителя','2'],
                       ['Гарантия','3'],
@@ -261,7 +253,7 @@
                       ['Наличие на складе','5'],
                       ['Сервисная поддержка 24/7','6']  ];
           foreach($WORKUS as $item): ?>
-          <div class="col-4 work__item item">
+          <div class="col work__item item">
             <div class="d-flex align-items-center justify-content-evently">
               <div class="item__img">
                 <img class="img-fluid" src="/img/workus/<?=$item[1]?>.png" alt="" >
@@ -276,29 +268,18 @@
     <section class="reviews">
       <div class="container">
       <h2 class="section-title"><span class="title_green">Отзывы наших </span><span>клиентов</span></h2>
-        <div class="row reviews__block">
+        <div class="row row-cols-md-2 row-cols-lg-4 justify-content-center reviews__block">
           <? $REVIEWS=[ ['Мария Смирнова','г.Москва',1,5],
                         ['Валя Кутепова','г.Улан-Уде',2,4],
                         ['Геннадий Петрович','г.Париж',3,5],
                         ['Иннокентий Смоктуновсий','г.Вологда',4,3]  ];
           foreach($REVIEWS as $item): ?>
-          <div class="col-lg-3">
+          <div class="col">
             <div class="block__item item">
               <div class="item__image">
                 <img class="img-fluid" src="/img/reviews/<?=$item[2];?>.jpg" alt="">
               </div>
-              
-              <div class="rating">
-                <div class="d-flex justify-content-center rating-group">
-                  <? for($i=0;$i<5;$i++): ?>
-                  <div class="rating_star">
-                    <svg class="star_svg svg-fill <?=($i<$item[3])?'fill':'';?>" role="img" aria-label="Tools">
-                      <use xlink:href="bootstrap-icons.svg#star-fill"/>
-                    </svg>
-                  </div>
-                  <? endfor; ?>
-                </div>
-              </div>
+              <? rating($item[3]); ?>
               <div class="item__content">
                 <div class="item__name"><?=$item[0];?></div>
                 <div class="item__city"><?=$item[1];?></div>  
@@ -311,23 +292,64 @@
         </div>
       </div>
     </section>
+    <section class="projects">
+      <div class="container">
+        <h2 class="section-title"><span class="title_green">Реализованные </span><span>проекты</span></h2>
+        <div class="row justify-content-center g-3 projects__block">
+        <? for($i=0;$i<12;$i++): ?>
+          <div class="col-auto block__item">
+            <a href=""><img src="\img\<?=$i+1;?>.jpg" alt=""></a>
+          </div>
+        <? endfor; ?>
+        </div>
+      </div>
+    </section>
+    <section class="feedback-form">
+      <div class="container">
+        <div class="row justify-content-center">
+        <h2>Остались вопросы?</h2>
+        <h3>Оставьте заявку на консультацию со специалистом.</h3>
+          <div class="col">
+            <form class="needs-validation" novalidate>
+              <div class="row row-cols-1 row-cols-lg-3 g-3">
+                <div class="col">
+                  <div class="form-floating ">
+                    <input type="text" class="form-control" id="floatingName" placeholder="Василий Пупкин" value="" required>
+                    <label for="floatingName">Введите ваше имя</label>
+                    <div class="invalid-feedback">Пожалуйста, введите имя.</div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatinPhone" placeholder="7912345678" value="" required>
+                    <label for="floatinPhone">Введите ваш телефон</label>
+                    <div class="invalid-feedback">Пожалуйста, введите телефон.</div>
+                  </div>
+                </div>
+                <div class="col">
+                  <button type="submit" class="btn btn-red">Получить консультацию</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
   </main>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  <footer>
 
-  </footer>
+  
+  
+  
+  
+  <? footer(); ?>
 </div>
 
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="script/script.js"></script>
 </body>
 </html>
